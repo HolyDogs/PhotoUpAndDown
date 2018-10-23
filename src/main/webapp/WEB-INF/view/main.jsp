@@ -9,6 +9,26 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 <script src="js/jquery-3.2.1.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
+
+<!-- 引用控制层插件样式 -->
+
+<link rel="stylesheet" href="css/zyUpload.css" type="text/css">
+
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+
+<!-- 引用核心层插件 -->
+
+<script src="core/zyFile.js"></script>
+
+<!-- 引用控制层插件 -->
+
+<script src="js/zyUpload.js"></script>
+
+<!-- 引用初始化JS -->
+
+<script src="core/jq22.js"></script>
+
+
 </head>
 <body>
 <div class="container">
@@ -20,16 +40,33 @@
 				</h1>
 			</div>
 			<div class="row clearfix">
-				<div class="col-md-6 column">
-					 <span class="label label-info">标签</span>
-					<div class="progress progress-striped active">
-						<div class="progress-bar progress-success">
-						</div>
+					<div class="col-md-7 column">
+							 <div class="page-header">
+						<h1>
+							<small>我的头像</small>
+						</h1>
 					</div>
+					 <img width="450" height="450" src="${pageContext.request.contextPath }/img/gethead" />
+					 <div id="demo" class="demo"></div>
 				</div>
-				<div class="col-md-6 column">
-					 <span class="label label-info">标签</span>
-				</div>
+				<div class="col-md-5 column">
+					 <div class="page-header">
+						<h1>
+							<small>我的介绍</small>
+						</h1>
+					</div>
+					 <ul>
+						<li>
+							我的ID:${user.id }
+						</li>
+						<li>
+							我的生日:${user.birth }
+						</li>
+						<li>
+							我的名字:${user.name }
+						</li>
+					</ul>
+				</div>	
 			</div>
 		</div>
 		<div class="col-md-4 column">

@@ -17,7 +17,7 @@
 			<h3 class="text-center text-info">
 				登陆
 			</h3>
-			<form action="${pageContext.request.contextPath}/login" class="form-horizontal" method="post">
+			<form action="${pageContext.request.contextPath}/come" class="form-horizontal" method="post">
 				<div class="form-group">
 					 <label for="inputEmail3" class="col-sm-2 control-label">id</label>
 					<div class="col-sm-10">

@@ -12,7 +12,12 @@ public class UserService {
 	@Autowired
 	private UserMapper userMapper;
 	
-	public User selectUser(int i) {
+	public User selectUserById(int i) {
 		return userMapper.selectByPrimaryKey(i);
+	}
+	
+	public void updateUserById(User user) {
+		
+		userMapper.updateByPrimaryKey(user);
 	}
 }
