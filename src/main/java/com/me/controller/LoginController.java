@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.me.pojo.User;
 import com.me.service.UserService;
-import com.me.utils.Acc;
 
 @Controller
 @SessionAttributes(types={User.class})
@@ -36,16 +35,16 @@ public class LoginController {
 	public ModelAndView login(@ModelAttribute("user") User user) throws IOException {
 		ModelAndView modelAndView=new ModelAndView();
 		
-
-		
 		if(user==null) {
 			modelAndView.setViewName("/error");
 			return modelAndView;
 		}
-		Acc acc=new Acc();
+/*		Acc acc=new Acc();
 		String str=acc.add();
+		
+		user.setName("ЦЦ");
 		user.setHead(str);
-		uService.updateUserById(user);
+		uService.updateUserById(user);*/
 		
 		modelAndView.setViewName("/main");
 		return modelAndView;

@@ -20,7 +20,7 @@
 					height           : "400px",  					// 宽度
 					itemWidth        : "140px",                     // 文件项的宽度
 					itemHeight       : "120px",                     // 文件项的高度
-					url              : "/upload/UploadAction",  	// 上传文件的路径
+					url              : "/img/update",  	// 上传文件的路径
 					multiple         : false,  						// 是否可以多个文件上传
 					dragDrop         : true,  						// 是否可以拖动上传文件
 					del              : true,  						// 是否可以删除文件
@@ -52,7 +52,7 @@
 				
 				if(para.dragDrop){
 					// 创建带有拖动的html
-					html += '<form id="uploadForm" action="'+para.url+'" method="post" enctype="multipart/form-data">';
+					html += '<form id="uploadForm" action="/PhotoUpAndDown/img/update" method="post" enctype="multipart/form-data">';
 					html += '	<div class="upload_box">';
 					html += '		<div class="upload_main">';
 					html += '			<div class="upload_choose">';
@@ -332,7 +332,7 @@
 					onSuccess: function(file, response) {
 						$("#uploadProgress_" + file.index).hide();
 						$("#uploadSuccess_" + file.index).show();
-						$("#uploadInf").append("<p>上传成功，文件地址是：" + response + "</p>");
+						$("#uploadInf").append("<p>更换成功！</p>");
 						// 根据配置参数确定隐不隐藏上传成功的文件
 						if(para.finishDel){
 							// 移除效果

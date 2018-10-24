@@ -12,12 +12,29 @@ public class UserService {
 	@Autowired
 	private UserMapper userMapper;
 	
+
 	public User selectUserById(int i) {
 		return userMapper.selectByPrimaryKey(i);
 	}
 	
+
 	public void updateUserById(User user) {
-		
-		userMapper.updateByPrimaryKey(user);
+		userMapper.updateByPrimaryKeyWithBLOBs(user);
+	}
+	
+	public void updateUserByIdPlus(User user) {
+		if(user.getId()!=null) {
+			User usert=userMapper.selectByPrimaryKey(user.getId());
+			if(user.getName()!=null) {
+				usert.setName(user.getName());
+			}
+			if(user.getBirth()!=null) {
+				usert.setBirth(user.getBirth());
+			}
+			if(user.getHead()!=null) {
+				usert.setHead(user.getHead());
+			}
+			updateUserById(usert);
+		}
 	}
 }
