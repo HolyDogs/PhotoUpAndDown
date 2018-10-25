@@ -34,6 +34,12 @@
         <property name="maxInMemorySize" value="1024"></property>
      </bean>
        
+       <mvc:interceptors>
+       		<mvc:interceptor>
+       			<mvc:mapping path="/**"/>
+       			<bean class="com.me.interceptor.LoginInterceptor"></bean>
+       		</mvc:interceptor>
+       </mvc:interceptors>
        
      <bean class="com.me.resolver.MainExceptionResolver"></bean>
        
