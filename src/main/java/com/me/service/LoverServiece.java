@@ -26,4 +26,8 @@ public class LoverServiece {
 	public void deleteLoverById(Integer id) {
 		loverMapper.deleteByPrimaryKey(id);
 	}
+	
+	public void saveLover(Lover lover) {
+		loverMapper.insertSelective(lover);
+	}
 }

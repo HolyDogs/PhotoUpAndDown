@@ -128,6 +128,9 @@
     values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{birth,jdbcType=DATE}, #{head,jdbcType=LONGVARCHAR})
   </insert>
+<!--   <insert id="insertAuto" parameterType="com.me.pojo.Lover">
+  	insert into lover (userid,name,birth)
+  </insert> -->
   <insert id="insertSelective" parameterType="com.me.pojo.Lover">
     insert into lover
     <trim prefix="(" suffix=")" suffixOverrides=",">

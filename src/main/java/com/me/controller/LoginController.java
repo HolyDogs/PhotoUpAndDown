@@ -37,7 +37,7 @@ public class LoginController {
 	}
 	
 	@ModelAttribute("lovers")
-	public List<Lover> setLovers(@RequestParam("userid")Integer userid){
+	public List<Lover> setLovers(@RequestParam("userid") Integer userid){
 		if(userid!=null) {
 			List<Lover> loverlist=lService.selectAllByUserId(userid);
 			return loverlist;
@@ -55,12 +55,6 @@ public class LoginController {
 			modelAndView.setViewName("/error");
 			return modelAndView;
 		}
-/*		Acc acc=new Acc();
-		String str=acc.add();
-		
-		user.setName("ЦЦ");
-		user.setHead(str);
-		uService.updateUserById(user);*/
 		
 		modelAndView.setViewName("/main");
 		return modelAndView;

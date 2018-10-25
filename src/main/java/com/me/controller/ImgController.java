@@ -1,10 +1,14 @@
 package com.me.controller;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Base64;
 import java.util.Iterator;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,6 +22,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.me.pojo.User;
 import com.me.service.UserService;
+import com.me.utils.RandomPic;
 
 @Controller
 @RequestMapping("/img")
@@ -64,6 +69,21 @@ public class ImgController {
 				}
 			}
 		}
+	}
+	
+	
+	@RequestMapping("/randompic")
+	public void randompic(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		Integer id=(Integer) request.getSession().getAttribute("loverid");
+		response.setDateHeader("Expires", -1);
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+
+		response.setHeader("Content-Type", "image/jpeg");
+
+		BufferedImage image=RandomPic.createRandomPic((Integer) request.getSession().getAttribute("loverid"));
+
+		ImageIO.write(image, "jpg", response.getOutputStream());
 	}
 
 	
