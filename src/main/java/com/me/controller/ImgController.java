@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.me.exceptions.UserException;
 import com.me.pojo.User;
 import com.me.service.UserService;
 import com.me.utils.RandomPic;
@@ -27,17 +28,15 @@ import com.me.utils.RandomPic;
 public class ImgController {
 	
 	@RequestMapping("/gethead")
-	public void getHead(HttpServletRequest request,HttpServletResponse response) {
+	public void getHead(HttpServletRequest request,HttpServletResponse response) throws UserException {
 		User user=(User) request.getSession().getAttribute("user");
 		byte data[]=Base64.getDecoder().decode(user.getHead());
 		OutputStream outputStream;
 		try {
 			outputStream = response.getOutputStream();
 			outputStream.write(data);
-			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new UserException("头像异常");
 		}
 
 	}
@@ -46,7 +45,7 @@ public class ImgController {
 	private UserService userService;
 	
 	@RequestMapping(value="/update")
-	public void updateHead(HttpServletRequest request,HttpServletResponse response) {
+	public void updateHead(HttpServletRequest request,HttpServletResponse response) throws UserException {
 		MultipartResolver resolver=new CommonsMultipartResolver(request.getSession().getServletContext());
 		if(resolver.isMultipart(request)) {
 			MultipartHttpServletRequest multipartHttpServletRequest=resolver.resolveMultipart(request);
@@ -61,9 +60,10 @@ public class ImgController {
 						user.setHead(str);
 						userService.updateUserById(user);
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						throw new UserException("上传头像文件异常");
 					}
+				}else {
+					throw new UserException("获取不到头像");
 				}
 			}
 		}

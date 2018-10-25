@@ -51,7 +51,7 @@ $(document).ready(function(){
 			contentType:false,
 			data:form,
 			success:function(data){
-				alert("添加成功");
+				alert(data);
 				window.location.reload()
 			},
 			error:function(){

@@ -52,12 +52,17 @@ public class LoverController {
 	
 	@RequestMapping("/addl")
 	public void addl(@RequestParam("lname") String name,@RequestParam("month") String month,@RequestParam("day") String day,@RequestParam("year")String year,HttpServletRequest request,PrintWriter writer) throws ParseException {
+		if(name.length()>10) {
+			writer.write("failed to add");
+			return;
+		}
 		User user=(User) request.getSession().getAttribute("user");
 		Lover lover=new Lover();
 		lover.setUserid(user.getId());
 		lover.setName(name);
 		lover.setBirth(new SimpleDateFormat("yyyy-MM-dd").parse(year+"-"+month+"-"+day));
 		loverServiece.saveLover(lover);
-		writer.write(name);
+		writer.write("success");
+
 	}
 }
