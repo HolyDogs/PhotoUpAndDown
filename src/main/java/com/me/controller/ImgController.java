@@ -72,7 +72,6 @@ public class ImgController {
 	
 	@RequestMapping("/randompic")
 	public void randompic(HttpServletRequest request,HttpServletResponse response) throws IOException {
-		Integer id=(Integer) request.getSession().getAttribute("loverid");
 		response.setDateHeader("Expires", -1);
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");

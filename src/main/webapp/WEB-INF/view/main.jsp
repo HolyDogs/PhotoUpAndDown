@@ -33,7 +33,7 @@
 $(document).ready(function(){
 	$(".mybtnd").click(function(){
 		var str=this.value;
-		$.post("lover/deleteL",{"id":str},function(data){
+		$.post("${pageContext.request.contextPath}/lover/deleteL",{"id":str},function(data){
 			alert(data);
 			$("#div"+str).hide();
 		});
@@ -45,7 +45,7 @@ $(document).ready(function(){
 		
 		var form=new FormData(document.getElementById("forml"));
 		$.ajax({
-			url:"lover/addl",
+			url:"${pageContext.request.contextPath}/lover/addl",
 			type:"post",
  			processData:false,
 			contentType:false,
