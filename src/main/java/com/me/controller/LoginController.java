@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.me.exceptions.UserException;
 import com.me.pojo.Lover;
 import com.me.pojo.User;
 import com.me.service.LoverServiece;
@@ -26,13 +27,13 @@ public class LoginController {
 	private LoverServiece lService;
 	
 	@ModelAttribute("user")
-	public User setUser(@RequestParam("userid") Integer id,@RequestParam("password") String password) {
+	public User setUser(@RequestParam("userid") Integer id,@RequestParam("password") String password) throws UserException {
 		if(id!=null&&password.equals("1")) {
 			User user=uService.selectUserById(id);
 			return user;	
 		}
 		else {
-			return null;
+			throw new UserException("用户id或密码错误");
 		}
 	}
 	
@@ -48,12 +49,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/come")
-	public ModelAndView login(@ModelAttribute("user") User user) throws IOException {
+	public ModelAndView login(@ModelAttribute("user") User user) throws IOException, UserException {
 		ModelAndView modelAndView=new ModelAndView();
 		
 		if(user==null) {
-			modelAndView.setViewName("/error");
-			return modelAndView;
+			throw new UserException("找不到该用户");
 		}
 		
 		modelAndView.setViewName("/main");
