@@ -22,7 +22,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (user!= null) {
 			return true;
 		}
-		
 		response.sendRedirect("login.jsp");
 		return false;
 	}

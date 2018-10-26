@@ -83,5 +83,17 @@ public class ImgController {
 		ImageIO.write(image, "jpg", response.getOutputStream());
 	}
 
+	@RequestMapping("/download")
+	public void download(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		response.setDateHeader("Expires", -1);
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		
+		response.setHeader("content-disposition", "attachment;");
+
+		BufferedImage image=RandomPic.createRandomPic((Integer) request.getSession().getAttribute("loverid"));
+
+		ImageIO.write(image, "jpg", response.getOutputStream());
+	}
 	
 }
