@@ -15,7 +15,8 @@
 <div class="container">
 	<div class="row clearfix">
 	<div class="col-md-2 column">
-		<a class="btn btn-info" href="${pageContext.request.contextPath }/lover/back">返回</a>
+		<a class="btn btn-lg btn-info" href="${pageContext.request.contextPath }/lover/back">返回</a>
+		<a class="btn btn-lg btn-warning" href="${pageContext.request.contextPath }/img/download">下载图片</a>
 	</div>
 	
 		<div class="col-md-8 column">
